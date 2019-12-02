@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Promocode;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -26,6 +27,12 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::model('promocode', Promocode::class);
+
+        Route::bind('promocodeName', function ($value) {
+            return Promocode::where('name', $value)->first() ?? abort(404);
+        });
     }
 
     /**

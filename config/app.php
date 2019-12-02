@@ -95,6 +95,27 @@ return [
 
     'fallback_locale' => 'en',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Максимально кол-во символов в промокоде
+    |--------------------------------------------------------------------------
+    |
+    | У промокода есть определенное кол-во символов
+    |
+    */
+    'max_promocodes_length' => 10,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Максимально кол-во символов в промокоде
+    |--------------------------------------------------------------------------
+    |
+    | У промокода есть определенное кол-во символов
+    |
+    */
+    'promocodes_alphabet' => '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM',
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
@@ -174,6 +195,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\PromocodeServiceProvider::class,
 
     ],
 

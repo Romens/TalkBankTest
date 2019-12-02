@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
+use App\Models\Promocode;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,12 +16,17 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Promocode::class, function (Faker $faker) {
+
+    $name = array_rand(
+        str_split(config('app.promocodes_alphabet')),
+        config('app.max_promocodes_length')
+    );
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'value' => $faker->numberBetween(0,100),
+        'max_use_count' => $faker->numberBetween(1,100),
+        'use_count' => 0,
+        'name' => $name,
     ];
 });

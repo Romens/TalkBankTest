@@ -10,4 +10,19 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function successResponse(array $data = [], int $code = 200)
+    {
+        $data['success'] = true;
+
+        return response()->json($data, $code);
+    }
+
+    public function errorResponse(array $errors = [], int $code = 423)
+    {
+        return response()->json([
+            'success' => false,
+            'errors' => $errors,
+        ], $code);
+    }
 }
